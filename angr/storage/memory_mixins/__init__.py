@@ -104,6 +104,8 @@ from .paged_memory.stack_allocation_mixin import StackAllocationMixin
 from .paged_memory.pages import *
 
 from .slotted_memory import SlottedMemoryMixin
+from .regioned_memory import RegionedMemoryMixin
+
 
 class DefaultMemory(
         SmartFindMixin,
@@ -133,6 +135,7 @@ class DefaultMemory(
         ):
     pass
 
+
 class FastMemory(
         NameResolutionMixin,
         SimpleInterfaceMixin,
@@ -143,6 +146,37 @@ class FastMemory(
         ):
     pass
 
+
+class AbstractMemory(
+        SmartFindMixin,
+        UnwrapperMixin,
+        NameResolutionMixin,
+        DataNormalizationMixin,
+        SimplificationMixin,
+        InspectMixinHigh,
+        ActionsMixinHigh,
+        UnderconstrainedMixin,
+        SizeConcretizationMixin,
+        SizeNormalizationMixin,
+        AddressConcretizationMixin,
+        #InspectMixinLow,
+        ActionsMixinLow,
+        ConditionalMixin,
+        ConvenientMappingsMixin,
+        # -----
+        StackAllocationMixin,
+        ClemoryBackerMixin,
+        DictBackerMixin,
+        PrivilegedPagingMixin,
+        UltraPagesMixin,
+        DefaultFillerMixin,
+        RegionedMemoryMixin,
+        PagedMemoryMixin,
+        ):
+    pass
+
+
 from angr.sim_state import SimState
 SimState.register_default('sym_memory', DefaultMemory)
 SimState.register_default('fast_memory', FastMemory)
+SimState.register_default('abs_memory', AbstractMemory)

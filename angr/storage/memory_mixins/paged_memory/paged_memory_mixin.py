@@ -397,5 +397,6 @@ class PagedMemoryMixin(MemoryMixin):
 class ListPagesMixin(PagedMemoryMixin):
     PAGE_TYPE = ListPage
 
+
 class UltraPagesMixin(PagedMemoryMixin):
     PAGE_TYPE = UltraPage

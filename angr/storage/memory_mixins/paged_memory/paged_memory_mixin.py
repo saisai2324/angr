@@ -136,7 +136,6 @@ class PagedMemoryMixin(MemoryMixin):
         l.debug("%s.load(%#x, %d, %s) = %s", self.id, addr, size, endness, out)
         return out
 
-
     def store(self, addr: int, data, size: int=None, endness=None, **kwargs):
         if endness is None:
             endness = self.endness

@@ -104,7 +104,7 @@ from .paged_memory.stack_allocation_mixin import StackAllocationMixin
 from .paged_memory.pages import *
 
 from .slotted_memory import SlottedMemoryMixin
-from .regioned_memory import RegionedMemoryMixin
+from .regioned_memory import RegionedMemoryMixin, RegionCategoryMixin
 
 
 class DefaultMemory(
@@ -165,12 +165,40 @@ class AbstractMemory(
         ConvenientMappingsMixin,
         # -----
         StackAllocationMixin,
-        ClemoryBackerMixin,
         DictBackerMixin,
         PrivilegedPagingMixin,
         UltraPagesMixin,
         DefaultFillerMixin,
         RegionedMemoryMixin,
+        ):
+    pass
+
+
+class RegionMemory(
+        RegionCategoryMixin,
+        SmartFindMixin,
+        UnwrapperMixin,
+        NameResolutionMixin,
+        DataNormalizationMixin,
+        SimplificationMixin,
+        InspectMixinHigh,
+        ActionsMixinHigh,
+        UnderconstrainedMixin,
+        SizeConcretizationMixin,
+        SizeNormalizationMixin,
+        AddressConcretizationMixin,
+        #InspectMixinLow,
+        ActionsMixinLow,
+        ConditionalMixin,
+        ConvenientMappingsMixin,
+        DirtyAddrsMixin,
+        # -----
+        StackAllocationMixin,
+        ClemoryBackerMixin,
+        DictBackerMixin,
+        PrivilegedPagingMixin,
+        UltraPagesMixin,
+        DefaultFillerMixin,
         PagedMemoryMixin,
         ):
     pass
